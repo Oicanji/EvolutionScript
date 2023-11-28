@@ -33,14 +33,12 @@ class AlgorithmGeneric:
         for _ in range(2):
             father = None
             sum_eval = self.sum()
-            print("sum_eval:", sum_eval)
             rand_val = random.uniform(0, sum_eval)
             sum_int = 0
             for ind in self.population:
                 sum_int += ind.evaluetion
-                if sum_int > rand_val:
+                if sum_int >= rand_val:
                     father = ind
                     break
             fathers.append(father)
-        print("Fathers:", fathers)
         return fathers

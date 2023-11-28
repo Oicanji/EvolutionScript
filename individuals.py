@@ -1,15 +1,17 @@
 import random
 
+from data import MUTATION_RATE
+
 
 class Individuals():
-    def __init__(self, spaces, products, limit, generation=0, gens=None):
-        self.generation = generation
+    def __init__(self, products, values, limit, generation=0, gens=None):
         self.products = products
+        self.values = values
         self.limit = limit
-        self.evaluetion = 0
-        self.spaces = spaces
-        self.generation = 0
-        self.gen = gens if gens else self.create_gens(len(spaces))
+        self.spaces = 0
+        self.generation = generation
+        self.gens = gens if gens else self.create_gens(len(products))
+        self.evaluetion = self.avaliation()
 
     def create_gens(self, size):
         list_gens = []
@@ -18,49 +20,42 @@ class Individuals():
             list_gens.append(result)
         return list_gens
 
-    def vals(self):
-        for i in range(len(self.gen)):
-            if self.gen[i] == 1:
-                self.spaces += self.products[i].space
-                self.evaluetion += self.products[i].value
-
-        if self.spaces > self.limit:
-            self.evaluetion = 1
-        return self.spaces, self.evaluetion
-
     def crossover(self, other):
-        cut = random.randint(0, len(self.gen) - 1)
+        cut = round(random.random() * len(self.gens))
 
-        child1 = other.gen[0:cut] + self.gen[cut::]
-        child2 = self.gen[0:cut] + other.gen[cut::]
+        child1 = other.gens[0:cut] + self.gens[cut::]
+        child2 = self.gens[0:cut] + other.gens[cut::]
 
-        childs = [Individuals(self.spaces, self.products, self.limit, self.generation + 1),
-                  Individuals(self.spaces, self.products, self.limit, self.generation + 1)]
+        return  (Individuals(self.products, self.values, self.limit, self.generation + 1, self.mutation(MUTATION_RATE, child1)),
+                  Individuals(self.products, self.values, self.limit, self.generation + 1, self.mutation(MUTATION_RATE, child2)))
 
-        childs[0].gen = child1
-        childs[1].gen = child2
+        # childs[0].gens = child1
+        # childs[1].gens = child2
 
-        return childs
+        # return childs
 
-    def mutation(self, tax, gen):
-        for i in range(len(gen)):
-            if random.random() < tax:
-                if gen[i] == 1:
-                    gen[i] = 0
+    def mutation(self, tax, gens):
+        for i in range(len(gens)):
+            if random.randint(0, 100) < tax:
+                if gens[i] == 1:
+                    gens[i] = 0
                 else:
-                    gen[i] = 1
-        return gen
+                    gens[i] = 1
+        return gens
 
     def __str__(self) -> str:
-        return self.gen.__str__()
+        return self.gens.__str__()
 
     def avaliation(self):
         grade = 0
         self.spaces = 0
-        for index, item in enumerate(self.cromossomo):
-            if item == 1:
-                grade += self.products[index].value
-                self.spaces += self.products[index].space
-        if self.spaces > self.limite_espacos:
+        print(self.gens)
+        for index, gen in enumerate(self.gens):
+            print(gen)
+            if gen == 1:
+                grade += self.values[index]
+                self.spaces += self.products[index]
+        print("self.spaces", self.spaces, "self.limit",  self.limit)
+        if self.spaces > self.limit:
             return 1
         return grade

@@ -19,19 +19,16 @@ def main():
         ag.order_population()
 
         best_of_generation = ag.population[0]
-        print("Geração:", ag.population[0])
         bests.append(best_of_generation)
-
+        
         ag.best_individual(best_of_generation)
 
         sum_evaluations = ag.sum()
 
         new_population = []
 
-        print("population_size:", ag.population_size)
         for _ in range(0, ag.population_size, 2):
             fathers = ag.select_fathers()
-            print("Parents:", fathers)
             children = fathers[0].crossover(fathers[1])
 
             for child in children:
@@ -42,11 +39,10 @@ def main():
 
     bests.append(best_of_generation)
 
-    print("Melhor solução:")
-    print("Cromossomo:", ag.best.gen)
-    print("Espaços usados:", ag.best.spaces)
-    print("Valores obtidos:", ag.best.values)
-    print("Preço total da mochila", ag.best.evaluetion)
+    # print("Melhor solução:")
+    # print("Cromossomo:", ag.best.gen)
+    # print("Espaços usados:", ag.best.spaces)
+    # print("Preço total da mochila", ag.best.evaluetion)
 
     def create_chart(res):
         generations = list(range(1, len(res) + 1))
