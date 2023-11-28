@@ -1,0 +1,58 @@
+from product import Product
+
+
+list_product = [
+    Product("Arroz", 1.11, 4.75),
+    Product("Feijão", 1.25, 8.0),
+    Product("Farinha de trigo", 1.67, 5.5),
+    Product("Acucar", 1.25, 3.5),
+    Product("Sal", 0.46, 1.5),
+    Product("Oleo de cozinha", 0.9, 4.5),
+    Product("Cafe", 1.39, 16.0),
+    Product("Leite", 1.0, 3.75),
+    Product("Manteiga", 0.54, 11.50),
+    Product("Pao", 1.75, 10.0),
+    Product("Massas", 1.33,  7.5),
+    Product("Enlatados", 0.33, 6.0),
+    Product("Sabao", 0.22, 3.0),
+    Product("Papel higienico", 3.24, 4.5),
+    Product("Detergente", 0.5, 2.5),
+    Product("Desinfetante", 0.5, 3.0),
+    Product("Sabonete", 0.9, 2.0),
+    Product("Shampoo", 0.9, 7.0),
+    Product("Condicionador", 0.9, 8.0),
+    Product("Creme dental", 0.9, 3.0),
+    Product("Escova de dente", 0.9, 5.0),
+    Product("Papel aluminio", 0.9, 4.0),
+    Product("Papel filme", 0.9, 4.0),
+    Product("Esponja de aço", 0.9, 2.0),
+    Product("Arroz", 1.11, 4.75),
+    Product("Feijão", 1.25, 8.0),
+    Product("Farinha de trigo", 1.67, 5.5),
+    Product("Acucar", 1.25, 3.5),
+    Product("Sal", 0.46, 1.5),
+    Product("Oleo de cozinha", 0.9, 4.5),
+    Product("Cafe", 1.39, 16.0),
+    Product("Leite", 1.0, 3.75),
+    Product("Manteiga", 0.54, 11.50),
+    Product("Pao", 1.75, 10.0),
+    Product("Massas", 1.33,  7.5),
+    Product("Enlatados", 0.33, 6.0),
+    Product("Sabao", 0.22, 3.0),
+    Product("Papel higienico", 3.24, 4.5),
+    Product("Detergente", 0.5, 2.5),
+    Product("Desinfetante", 0.5, 3.0),
+    Product("Sabonete", 0.9, 2.0),
+    Product("Shampoo", 0.9, 7.0),
+    Product("Condicionador", 0.9, 8.0),
+    Product("Creme dental", 0.9, 3.0),
+    Product("Escova de dente", 0.9, 5.0),
+    Product("Papel aluminio", 0.9, 4.0),
+    Product("Papel filme", 0.9, 4.0),
+    Product("Esponja de aço", 0.9, 2.0),
+]
+
+SPACE_LIMIT = 10
+POPULATION_SIZE = 20
+MUTATION_RATE = 50
+GENERATIONS = 200
